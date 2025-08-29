@@ -43,7 +43,6 @@ void movimiento_ruedas_izquierda(const String& direccion) {
     }
 }
 
-
 void movimiento_ruedas_derecha(const String& direccion) {
     if (direccion == "avanzar") {
         for (int i = 0; i < numero_de_pines; i++) {
@@ -72,6 +71,36 @@ void movimiento_ruedas_derecha(const String& direccion) {
     }
 }
 
+void avanzar() {
+  movimiento_ruedas_izquierda("avanzar");
+  movimiento_ruedas_derecha("avanzar");
+}
+
+void retroceder() {
+  movimiento_ruedas_izquierda("retroceder");
+  movimiento_ruedas_derecha("retroceder");
+
+}
+
+void frenar() {
+  movimiento_ruedas_izquierda("detenerse");
+  movimiento_ruedas_derecha("detenerse");
+
+}
+
+void girar(const String& direccion) {
+  if (direccion == "derecha"){
+    movimiento_ruedas_izquierda("avanzar");
+    movimiento_ruedas_derecha("retroceder");
+    }
+  else { if (direccion == "izquierda") {
+    movimiento_ruedas_izquierda("retroceder");
+    movimiento_ruedas_derecha("avanzar");
+    }
+  }
+}
+
+
 
 void setup() {
   for (int i = 0; i < numero_de_pines; i++) {
@@ -83,34 +112,26 @@ void setup() {
 
 void loop() {
   //Avanzar
-  movimiento_ruedas_izquierda("avanzar");
-  movimiento_ruedas_derecha("avanzar");
-
+  avanzar();
   delay(1000);
+  
   //Frenar
-  movimiento_ruedas_izquierda("detenerse");
-  movimiento_ruedas_derecha("detenerse");
-
+  frenar();
+  delay(1000);
+  
   //Retroceder
+  retroceder();
   delay(1000);
-  movimiento_ruedas_izquierda("retroceder");
-  movimiento_ruedas_derecha("retroceder");
 
   //Frenar
+  frenar();
   delay(1000);
-  movimiento_ruedas_izquierda("detenerse");
-  movimiento_ruedas_derecha("detenerse");
-
+  
   //Giro hacia la derecha
+  girar("derecha");
   delay(1000);
-  movimiento_ruedas_izquierda("avanzar");
-  movimiento_ruedas_derecha("retroceder");
 
-
-  //Giro hacia la derecha
-  delay(1000);
-  movimiento_ruedas_izquierda("retroceder");
-  movimiento_ruedas_derecha("avanzar");
-
+  //Giro hacia la izquierda
+  girar("izquierda");
   delay(1000);
 }
