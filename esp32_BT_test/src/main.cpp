@@ -1,3 +1,4 @@
+
 #include <Arduino.h>
 
 int pins_motores_izquierda[] = {
@@ -13,9 +14,9 @@ int pins_motores_derecha[] = {
 //Se asume que izquierda y derecha tienen la misma cantidad de motores
 int numero_de_pines = sizeof(pins_motores_izquierda) / sizeof(pins_motores_izquierda[0]);
 
-// funciones
-//Movimiento ruedas derechas
-void movimiento_ruedas_izquierda(const String& direccion) {
+//Funciones
+  //Movimiento ruedas derechas
+void movimiento_ruedas_izquierda(const char* direccion) {
     if (direccion == "avanzar") {
         for (int i = 0; i < numero_de_pines; i++) {
             if (i % 2 == 0) {
@@ -42,8 +43,8 @@ void movimiento_ruedas_izquierda(const String& direccion) {
         }
     }
 }
-
-void movimiento_ruedas_derecha(const String& direccion) {
+  //Movimiento ruedas izquierdas
+void movimiento_ruedas_derecha(const char* direccion) {
     if (direccion == "avanzar") {
         for (int i = 0; i < numero_de_pines; i++) {
             if (i % 2 == 0) {
@@ -70,25 +71,25 @@ void movimiento_ruedas_derecha(const String& direccion) {
         }
     }
 }
-
+  //Avanzar
 void avanzar() {
   movimiento_ruedas_izquierda("avanzar");
   movimiento_ruedas_derecha("avanzar");
 }
-
+  //Retrocerder
 void retroceder() {
   movimiento_ruedas_izquierda("retroceder");
   movimiento_ruedas_derecha("retroceder");
 
 }
-
+  //Frenar
 void frenar() {
   movimiento_ruedas_izquierda("detenerse");
   movimiento_ruedas_derecha("detenerse");
 
 }
-
-void girar(const String& direccion) {
+  //Girar con argumento de direccion
+void girar(const char* direccion) {
   if (direccion == "derecha"){
     movimiento_ruedas_izquierda("avanzar");
     movimiento_ruedas_derecha("retroceder");
@@ -99,7 +100,6 @@ void girar(const String& direccion) {
     }
   }
 }
-
 
 
 void setup() {
