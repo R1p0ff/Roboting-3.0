@@ -1,5 +1,11 @@
-
 #include <Arduino.h>
+#include <Adafruit_NeoPixel.h>
+
+
+
+
+int anillo1_pin = 4;
+int anillo2_pin = 5;
 
 int pins_motores_izquierda[] = {
   19, 18, //motor1_pin1, motor1_pin2
@@ -7,8 +13,10 @@ int pins_motores_izquierda[] = {
 int pins_motores_derecha[] = {
   17, 16, //motor3_pin1, motor3_pin2
 };
-//Se asume que izquierda y derecha tienen la misma cantidad de motores
 int numero_de_pines = sizeof(pins_motores_izquierda) / sizeof(pins_motores_izquierda[0]);
+
+Adafruit_NeoPixel anillo1(16, anillo1_pin, NEO_GRB + NEO_KHZ800);
+Adafruit_NeoPixel anillo2(16, anillo2_pin, NEO_GRB + NEO_KHZ800);
 
 //Funciones
 void movimiento_ruedas(int* pins, const char* direccion) {
@@ -77,10 +85,16 @@ void setup() {
     pinMode(pins_motores_izquierda[i], OUTPUT);
     pinMode(pins_motores_derecha[i], OUTPUT);
   }
+  anillo1.begin();
+  anillo2.begin();
 }
 
 
 void loop() {
+  anillo1.fill(anillo1.Color(0, 0, 255));
+  anillo2.fill(anillo2.Color(255, 0, 0));
+  anillo1.show();
+  anillo2.show();
   //Avanzar
   avanzar();
   delay(1000);
