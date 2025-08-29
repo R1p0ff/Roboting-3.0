@@ -104,12 +104,12 @@ void loop() {
   //Giro hacia la derecha
   delay(1000);
   movimiento_ruedas_izquierda("avanzar");
-  movimiento_ruedas_derecha("detenerse");
+  movimiento_ruedas_derecha("retroceder");
 
 
   //Giro hacia la derecha
   delay(1000);
-  movimiento_ruedas_izquierda("detenerse");
+  movimiento_ruedas_izquierda("retroceder");
   movimiento_ruedas_derecha("avanzar");
 
   delay(1000);
