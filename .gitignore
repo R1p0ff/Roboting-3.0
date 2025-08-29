@@ -1,3 +1,16 @@
+# Archivos de PlatformIO
+.pio/
+*.ini
+*.toml
+# Ignorar archivos específicos en tu proyecto
+esp32_BT_test/diagram.json
+esp32_BT_test/*.ini
+esp32_BT_test/*.toml
+
+# Archivos de configuración y metadatos generales
+*.json
+*.ini
+*.toml
 
 # Archivos de VSCode
 .vscode/
@@ -5,5 +18,3 @@
 .vscode/c_cpp_properties.json
 .vscode/launch.json
 .vscode/ipch/
-
-
