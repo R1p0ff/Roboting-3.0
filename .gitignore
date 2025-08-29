@@ -1,7 +1,3 @@
-# Archivos de PlatformIO
-.pio/
-*.ini
-*.toml
 
 # Archivos de VSCode
 .vscode/
