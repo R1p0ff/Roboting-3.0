@@ -4,97 +4,69 @@
 int pins_motores_izquierda[] = {
   19, 18, //motor1_pin1, motor1_pin2
 };
-
 int pins_motores_derecha[] = {
   17, 16, //motor3_pin1, motor3_pin2
 };
-
 //Se asume que izquierda y derecha tienen la misma cantidad de motores
 int numero_de_pines = sizeof(pins_motores_izquierda) / sizeof(pins_motores_izquierda[0]);
 
 //Funciones
-  //Movimiento ruedas derechas
-void movimiento_ruedas_izquierda(const char* direccion) {
+void movimiento_ruedas(int* pins, const char* direccion) {
+  //Movimiento ruedas izquierdas y derechas
     if (direccion == "avanzar") {
         for (int i = 0; i < numero_de_pines; i++) {
             if (i % 2 == 0) {
-                digitalWrite(pins_motores_izquierda[i], HIGH);
+                digitalWrite(pins[i], HIGH);
             } else {
-                digitalWrite(pins_motores_izquierda[i], LOW);
+                digitalWrite(pins[i], LOW);
             }
         }
     } else if (direccion == "retroceder") {
         for (int i = 0; i < numero_de_pines; i++) {
             if (i % 2 == 0) {
-                digitalWrite(pins_motores_izquierda[i], LOW);
+                digitalWrite(pins[i], LOW);
             } else {
-                digitalWrite(pins_motores_izquierda[i], HIGH);
+                digitalWrite(pins[i], HIGH);
             }
         }
     } else if (direccion == "detenerse") {
         for (int i = 0; i < numero_de_pines; i++) {
             if (i % 2 == 0) {
-                digitalWrite(pins_motores_izquierda[i], LOW);
+                digitalWrite(pins[i], LOW);
             } else {
-                digitalWrite(pins_motores_izquierda[i], LOW);
+                digitalWrite(pins[i], LOW);
             }
         }
     }
 }
-  //Movimiento ruedas izquierdas
-void movimiento_ruedas_derecha(const char* direccion) {
-    if (direccion == "avanzar") {
-        for (int i = 0; i < numero_de_pines; i++) {
-            if (i % 2 == 0) {
-                digitalWrite(pins_motores_derecha[i], HIGH);
-            } else {
-                digitalWrite(pins_motores_derecha[i], LOW);
-            }
-        }
-    } else if (direccion == "retroceder") {
-        for (int i = 0; i < numero_de_pines; i++) {
-            if (i % 2 == 0) {
-                digitalWrite(pins_motores_derecha[i], LOW);
-            } else {
-                digitalWrite(pins_motores_derecha[i], HIGH);
-            }
-        }
-    } else if (direccion == "detenerse") {
-        for (int i = 0; i < numero_de_pines; i++) {
-            if (i % 2 == 0) {
-                digitalWrite(pins_motores_derecha[i], LOW);
-            } else {
-                digitalWrite(pins_motores_derecha[i], LOW);
-            }
-        }
-    }
-}
-  //Avanzar
+
 void avanzar() {
-  movimiento_ruedas_izquierda("avanzar");
-  movimiento_ruedas_derecha("avanzar");
+  movimiento_ruedas(pins_motores_izquierda, "avanzar");
+  movimiento_ruedas(pins_motores_derecha, "avanzar");
 }
-  //Retrocerder
+
 void retroceder() {
-  movimiento_ruedas_izquierda("retroceder");
-  movimiento_ruedas_derecha("retroceder");
+  movimiento_ruedas(pins_motores_izquierda, "retroceder");
+  movimiento_ruedas(pins_motores_derecha, "retroceder");
 
 }
-  //Frenar
+
 void frenar() {
-  movimiento_ruedas_izquierda("detenerse");
-  movimiento_ruedas_derecha("detenerse");
+  movimiento_ruedas(pins_motores_izquierda, "detenerse");
+  movimiento_ruedas(pins_motores_derecha, "detenerse");
 
 }
-  //Girar con argumento de direccion
+
 void girar(const char* direccion) {
+  //Girar con argumento de direccion
+
   if (direccion == "derecha"){
-    movimiento_ruedas_izquierda("avanzar");
-    movimiento_ruedas_derecha("retroceder");
+    movimiento_ruedas(pins_motores_izquierda, "avanzar");
+    movimiento_ruedas(pins_motores_derecha, "retroceder");
     }
   else { if (direccion == "izquierda") {
-    movimiento_ruedas_izquierda("retroceder");
-    movimiento_ruedas_derecha("avanzar");
+    movimiento_ruedas(pins_motores_izquierda, "retroceder");
+    movimiento_ruedas(pins_motores_derecha, "avanzar");
     }
   }
 }
