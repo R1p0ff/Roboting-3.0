@@ -3,12 +3,10 @@
 
 int pins_motores_izquierda[] = {
   19, 18, //motor1_pin1, motor1_pin2
-  2, 0, //motor2_pin1, motor2_pin2
 };
 
 int pins_motores_derecha[] = {
   17, 16, //motor3_pin1, motor3_pin2
-  4, 15, //motor4_pin1, motor4_pin2
 };
 
 //Se asume que izquierda y derecha tienen la misma cantidad de motores
