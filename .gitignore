@@ -18,3 +18,5 @@ esp32_BT_test/*.toml
 .vscode/c_cpp_properties.json
 .vscode/launch.json
 .vscode/ipch/
+
+esp32_BT_test/.gitignore
